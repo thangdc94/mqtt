@@ -13,6 +13,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.IBinder;
+import android.os.StrictMode;
 import android.util.Log;
 
 import com.ibm.mqtt.IMqttClient;
@@ -124,6 +125,11 @@ public class PushService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
 
         log("Creating service");
         mStartTime = System.currentTimeMillis();
@@ -373,6 +379,7 @@ public class PushService extends Service {
     }
 
     private synchronized void reconnectIfNecessary() {
+        Log.d(TAG, "" + mStarted + ", " + mConnection);
         if (mStarted == true && mConnection == null) {
             log("Reconnecting...");
             connect();
@@ -413,7 +420,7 @@ public class PushService extends Service {
         builder.setSmallIcon(R.drawable.icon);
         builder.setContentTitle(NOTIF_TITLE);
         builder.setContentIntent(pi);
-        builder.setContentText("You have a new message");
+        builder.setContentText(text);
         builder.setAutoCancel(true);
 
         Notification notification = builder.getNotification();

@@ -50,11 +50,17 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
 
-
-
+        SharedPreferences p = getSharedPreferences(PushService.TAG, MODE_PRIVATE);
+        boolean started = p.getBoolean(PushService.PREF_STARTED, false);
 
         ToggleButton mSwitchShowSecure;
         mSwitchShowSecure = (ToggleButton) menu.findItem(R.id.show_secure).getActionView().findViewById(R.id.ToggleButton0111);
+
+        if (started)
+            mSwitchShowSecure.setChecked(true);
+        else
+            mSwitchShowSecure.setChecked(false);
+
         mSwitchShowSecure.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
