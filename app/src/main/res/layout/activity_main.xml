@@ -15,6 +15,7 @@
         android:background="@color/colorPrimary"
         android:titleTextColor="@color/white"
         android:elevation="4dp"
+        android:paddingRight="10dp"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         >
@@ -27,16 +28,23 @@
         android:weightSum="4"
         android:orientation="vertical">
 
-
-        <ToggleButton
-            android:background="@drawable/ic_toggle_bg"
-            style="@style/toggleButton"
-            android:checked="true"
-            android:id="@+id/ToggleButton01"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2.5">
-        </ToggleButton>
+            android:layout_weight="2.5"
+            android:gravity="center">
+            <ToggleButton
+                android:background="@drawable/ic_toggle_bg"
+                style="@style/toggleButton"
+                android:checked="true"
+                android:id="@+id/ToggleButton01"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+
+                >
+            </ToggleButton>
+        </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"

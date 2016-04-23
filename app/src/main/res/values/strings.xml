@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">mqtt</string>
+    <string name="app_name">MQTT</string>
     <string name="hello">Hello World, PushActivity!</string>
     <string name="target">Your Device Target:</string>
     <string name="stop_service">Stop Push Service</string>

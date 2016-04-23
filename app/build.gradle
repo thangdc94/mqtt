@@ -24,4 +24,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.1'
     compile files('/home/thang/AndroidStudioProjects/mqtt/libs/wmqtt.jar')
+    compile files('C:/Users/AM/Desktop/mqtt-master/mqtt/libs/wmqtt.jar')
 }

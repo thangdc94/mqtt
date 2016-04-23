@@ -4,7 +4,7 @@
     android:layout_height="wrap_content">
 
     <ToggleButton
-        android:background="@drawable/ic_toggle_bg"
+        android:background="@drawable/ic_toggle"
         style="@style/toggleButton"
         android:checked="true"
         android:id="@+id/ToggleButton0111"
