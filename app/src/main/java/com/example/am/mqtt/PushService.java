@@ -34,7 +34,7 @@ public class PushService extends Service {
     public static final String TAG = "PushService";
 
     // the IP address, where your MQTT broker is running.
-    private static final String MQTT_HOST = "192.168.1.118";
+    private static final String MQTT_HOST = "192.168.3.46";
     // the topic name
     private static final String MQTT_TOPIC = "hello/world";
     // the port at which the broker is running.
