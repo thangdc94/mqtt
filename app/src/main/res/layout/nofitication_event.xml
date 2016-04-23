@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tvMess"
+        android:layout_width="match_parent"
+        android:layout_height="350dp" />
+    <Button
+        android:background="@color/black"
+        android:layout_below="@+id/tvMess"
+        android:paddingLeft="140dp"
+        android:drawableLeft="@drawable/like44"
+        android:id="@+id/btnLike"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_below="@+id/btnLike"
+        android:orientation="horizontal"
+        android:id="@+id/btnLine"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"></LinearLayout>
+    <Button
+        android:background="@color/black"
+        android:paddingLeft="140dp"
+        android:drawableLeft="@drawable/dis44"
+        android:layout_below="@id/btnLine"
+        android:id="@+id/btnDislike"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
