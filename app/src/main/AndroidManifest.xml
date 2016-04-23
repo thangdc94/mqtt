@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".Notification"/>
         <!--<activity-->
             <!--android:name=".PushActivity"-->
             <!--android:label="@string/app_name"-->

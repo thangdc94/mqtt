@@ -540,6 +540,8 @@ public class PushService extends Service {
         public void publishArrived(String topicName, byte[] payload, int qos, boolean retained) {
             // Show a notification
             String s = new String(payload);
+
+
             showNotification(s);
             log("Got message: " + s);
 
