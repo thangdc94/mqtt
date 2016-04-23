@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- "Mark Favorite", should appear as action button if possible -->
+    <item android:title=""
+
+        android:id="@+id/action_home"
+        android:icon="@drawable/light_off"
+
+        app:showAsAction="ifRoom|withText"
+        tools:ignore="AppCompatResource"
+        />
+    <item
+        android:id="@+id/show_secure"
+        android:enabled="true"
+        android:title=""
+        android:visible="true"
+        app:actionLayout="@layout/show_protected_switch"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/temp"
+        android:title="">
+
+    </item>
+
+</menu>

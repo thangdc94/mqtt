@@ -1,0 +1,8 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:state_checked="false"
+        android:drawable="@drawable/on_512" />
+    <item
+        android:state_checked="true"
+        android:drawable="@drawable/off_512" />
+</selector>
