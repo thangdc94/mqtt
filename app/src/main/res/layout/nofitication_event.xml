@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="350dp" />
     <Button
-        android:background="@color/black"
+        android:background="@drawable/button_background"
         android:layout_below="@+id/tvMess"
         android:paddingLeft="140dp"
         android:drawableLeft="@drawable/like44"
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"></LinearLayout>
     <Button
-        android:background="@color/black"
+        android:background="@drawable/button_background"
         android:paddingLeft="140dp"
         android:drawableLeft="@drawable/dis44"
         android:layout_below="@id/btnLine"

@@ -8,4 +8,7 @@
     <color name="background_color">#a2d03b</color>
     <color name="text_color">#FFFFFF</color>
     <color name="black">#4b7aed</color>
+    <color name="button_pressed">#ff8a00</color>
+    <color name="button_focused">#ff8a00</color>
+    <color name="button_default">#1c76bb</color>
 </resources>
