@@ -280,15 +280,7 @@ public class PushService extends Service {
         if (deviceID == null) {
             log("Device ID not found.");
         } else {
-            try {
-                mConnection = new MQTTConnection(MQTT_HOST, MQTT_TOPIC);
-            } catch (MqttException e) {
-                // Schedule a reconnect, if we failed to connect
-                log("MqttException: " + (e.getMessage() != null ? e.getMessage() : "NULL"));
-                if (isNetworkAvailable()) {
-                    scheduleReconnect(mStartTime);
-                }
-            }
+            mConnection = new MQTTConnection(MQTT_HOST, MQTT_TOPIC);
             setStarted(true);
         }
     }
@@ -415,7 +407,7 @@ public class PushService extends Service {
     private void showNotification(String text) {
         // Simply open the parent activity
         PendingIntent pi = PendingIntent.getActivity(this, 0,
-                new Intent(this, MainActivity.class), 0);
+                new Intent(this, PushActivity.class), 0);
 
         Notification.Builder builder = new Notification.Builder(this);
         builder.setSmallIcon(R.drawable.icon);
@@ -445,19 +437,31 @@ public class PushService extends Service {
         IMqttClient mqttClient = null;
 
         // Creates a new connection given the broker address and initial topic
-        public MQTTConnection(String brokerHostName, String initTopic) throws MqttException {
+        public MQTTConnection(String brokerHostName, String initTopic) {
             // Create connection spec
             String mqttConnSpec = "tcp://" + brokerHostName + "@" + MQTT_BROKER_PORT_NUM;
             // Create the client and connect
-            mqttClient = MqttClient.createMqttClient(mqttConnSpec, MQTT_PERSISTENCE);
+            try {
+                mqttClient = MqttClient.createMqttClient(mqttConnSpec, MQTT_PERSISTENCE);
+            } catch (MqttException e) {
+                e.printStackTrace();
+            }
 //            String clientID = MQTT_CLIENT_ID + "/" + mPrefs.getString(PREF_DEVICE_ID, "");
-            mqttClient.connect(MQTT_CLIENT_ID, MQTT_CLEAN_START, MQTT_KEEP_ALIVE);
+            try {
+                mqttClient.connect(MQTT_CLIENT_ID, MQTT_CLEAN_START, MQTT_KEEP_ALIVE);
+            } catch (MqttException e) {
+                e.printStackTrace();
+            }
 
             // register this client app has being able to receive messages
             mqttClient.registerSimpleHandler(this);
 
             // Subscribe to an initial topic, which is combination of client ID and device ID.
-            subscribeToTopic(initTopic);
+            try {
+                subscribeToTopic(initTopic);
+            } catch (MqttException e) {
+                e.printStackTrace();
+            }
 
             log("Connection established to " + brokerHostName + " on topic " + initTopic);
 
