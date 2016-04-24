@@ -43,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    PushService.publish("on");
+//                    PushService.publish(PushService.MQTT_TOPIC_CONTROL, "on");
                 } else {
-                    PushService.publish("off");
+//                    PushService.publish(PushService.MQTT_TOPIC_CONTROL, "off");
                 }
             }
         });

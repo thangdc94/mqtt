@@ -14,6 +14,8 @@ public class MyReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         String s = intent.getExtras().getString("message");
         Log.d("MyReceiver", s);
-        MainActivity.textView.setText(s);
+        if (MainActivity.textView != null) {
+            MainActivity.textView.setText(s);
+        }
     }
 }

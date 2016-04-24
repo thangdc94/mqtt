@@ -37,7 +37,10 @@ public class PushService extends Service {
     // the IP address, where your MQTT broker is running.
     private static final String MQTT_HOST = "192.168.3.46";
     // the topic name
-    private static final String MQTT_TOPIC = "hello/world";
+    public static final String MQTT_TOPIC_CONTROL = "hello/world";
+    private static final String MQTT_TOPIC_ALERT = "hello/alert";
+    public static final String MQTT_TOPIC_FEDDBACK = "hello/feedback";
+
     // the port at which the broker is running.
     private static int MQTT_BROKER_PORT_NUM = 1883;
     // Let's not use the MQTT persistence.
@@ -286,15 +289,15 @@ public class PushService extends Service {
         if (deviceID == null) {
             log("Device ID not found.");
         } else {
-            mConnection = new MQTTConnection(MQTT_HOST, MQTT_TOPIC);
+            mConnection = new MQTTConnection(MQTT_HOST, MQTT_TOPIC_ALERT);
             setStarted(true);
         }
     }
 
-    public static void publish(String message) {
+    public static void publish(String topic, String message) {
         try {
             if (mConnection != null)
-                mConnection.publishToTopic(MQTT_TOPIC, message);
+                mConnection.publishToTopic(topic, message);
         } catch (MqttException e) {
             e.printStackTrace();
         }
@@ -413,8 +416,11 @@ public class PushService extends Service {
     // Display the topbar notification
     private void showNotification(String text) {
         // Simply open the parent activity
-        PendingIntent pi = PendingIntent.getActivity(this, 0,
-                new Intent(this, NotificationActivity.class), 0);
+        Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
+
+        intent.putExtra("message", text);
+
+        PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Notification.Builder builder = new Notification.Builder(this);
         builder.setSmallIcon(R.drawable.icon);
