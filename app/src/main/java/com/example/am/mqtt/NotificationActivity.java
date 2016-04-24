@@ -8,7 +8,7 @@ import android.widget.TextView;
 /**
  * Created by AM on 4/24/2016.
  */
-public class Notification extends Activity {
+public class NotificationActivity extends Activity {
     Button btnLike,btnDislike;
     TextView tv;
     @Override

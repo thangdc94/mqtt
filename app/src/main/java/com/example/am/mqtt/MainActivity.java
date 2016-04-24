@@ -8,11 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.CompoundButton;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
     private String mDeviceID;
-    private boolean isOn = true;
+    public static TextView textView;
+    private ToggleButton togglebtnLed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,23 +30,26 @@ public class MainActivity extends AppCompatActivity {
             StrictMode.setThreadPolicy(policy);
         }
 
+        textView = (TextView) findViewById(R.id.tvInfo);
+
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        myToolbar.setTitleTextColor(Color.RED);
         myToolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(myToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(false);
 
-
+        togglebtnLed = (ToggleButton) findViewById(R.id.togglebtnLed);
+        togglebtnLed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    PushService.publish("on");
+                } else {
+                    PushService.publish("off");
+                }
+            }
+        });
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        SharedPreferences p = getSharedPreferences(PushService.TAG, MODE_PRIVATE);
-        boolean started = p.getBoolean(PushService.PREF_STARTED, false);
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

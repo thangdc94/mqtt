@@ -37,7 +37,7 @@
                 android:background="@drawable/ic_toggle_bg"
                 style="@style/toggleButton"
                 android:checked="true"
-                android:id="@+id/ToggleButton01"
+                android:id="@+id/togglebtnLed"
                 android:layout_width="180dp"
                 android:layout_height="180dp"
 
@@ -46,6 +46,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tvInfo"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.5"/>

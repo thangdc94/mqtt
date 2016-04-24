@@ -68,7 +68,7 @@ public class PushService extends Service {
 
     // Connectivity manager to determining, when the phone loses connection
     private ConnectivityManager mConnMan;
-    // Notification manager to displaying arrived push notifications
+    // NotificationActivity manager to displaying arrived push notifications
     private NotificationManager mNotifMan;
 
     // Whether or not the service has been started.
@@ -91,9 +91,9 @@ public class PushService extends Service {
     // We store the last retry interval
     public static final String PREF_RETRY = "retryInterval";
 
-    // Notification title
+    // NotificationActivity title
     public static String NOTIF_TITLE = "AndroidMQTT";
-    // Notification id
+    // NotificationActivity id
     private static final int NOTIF_CONNECTED = 0;
 
     // This is the instance of an MQTT connection.
@@ -414,7 +414,7 @@ public class PushService extends Service {
     private void showNotification(String text) {
         // Simply open the parent activity
         PendingIntent pi = PendingIntent.getActivity(this, 0,
-                new Intent(this, PushActivity.class), 0);
+                new Intent(this, NotificationActivity.class), 0);
 
         Notification.Builder builder = new Notification.Builder(this);
         builder.setSmallIcon(R.drawable.icon);
